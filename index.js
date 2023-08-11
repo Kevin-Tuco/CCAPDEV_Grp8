@@ -6,6 +6,7 @@ const session = require('express-session');
 const mongoose = require("mongoose");
 const bodyParse = require("body-parser");
 const exphbs = require('express-handlebars');
+const hbs = require('hbs');
 const cors = require('cors')
 
 const connect = require('./models/db.js');
@@ -45,6 +46,7 @@ app.engine("hbs", exphbs.engine({
     }
 }));
 app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + '/views/partials');
 app.set("views", "./views");
 
 // Parse request body as json
